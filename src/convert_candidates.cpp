@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 
+//This is necessary to include the header file along with the processline
 #include "Candidates.h" 
 
 auto preprocess(ROOT::RDF::RNode df){
@@ -367,7 +368,10 @@ int main(int argc, char** argv){
     float weight = std::stof(argv[2]);
     char* output_file = argv[3];
 
-    gSystem->Load("build/CandidatesDict.so");
+    //gSystem->Load("build/CandidatesDict.so");
+    //Add the include path for the header file
+    gInterpreter->AddIncludePath("include");
+    gInterpreter->ProcessLine("#include \"Candidates.h\"");
 
     TChain chain;
     chain.Add((std::string(input_dir)+std::string("/output_1.root/scNtuplizer/Events")).c_str());
