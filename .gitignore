@@ -1,0 +1,11 @@
+#Ignore compiled files
+*.so
+*.cxx
+*.pcm
+*.exe
+
+#Ignore build directory
+build/
+
+#Ignore output files
+*.root
